@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <meta name="description" content="Guides and official links for Aadhaar, PAN, passports, voter ID, ration cards, driving licences, government schemes, scholarships and jobs in India." />
+    <title>Government Services — Daily India Utility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <script src="site-features.js" defer></script>
+    <script src="government-services.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="Daily India Utility home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span class="brand-name">daily<span>india</span><small>UTILITY</small></span>
+        </a>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="./index.html" data-gov-i18n="homeLink">Home</a>
+          <a href="./student-tools.html" data-gov-i18n="studentsLink">Students</a>
+          <a href="./vehicle-travel.html" data-gov-i18n="travelLink">Travel</a>
+          <a href="./banking-finance.html" data-gov-i18n="financeLink">Finance</a>
+          <a href="./everyday-online-tools.html" data-gov-i18n="onlineToolsLink">Online Tools</a>
+        </nav>
+        <button class="language-switch" id="languageSwitch" type="button" aria-label="Switch language">
+          <span class="language-globe" aria-hidden="true">文</span>
+          <span>EN</span><span class="language-divider">/</span><span>हि</span>
+        </button>
+        <div class="site-feature-controls">
+          <button class="site-control" type="button" data-theme-toggle aria-label="Enable dark mode" title="Dark mode"><span aria-hidden="true">☾</span></button>
+          <a class="site-control" href="./index.html#personalDashboard" aria-label="Personal dashboard" title="Personal dashboard"><span aria-hidden="true">♙</span></a>
+          <button class="site-control" type="button" data-install-app hidden aria-label="Install app" title="Install app"><span aria-hidden="true">⇩</span></button>
+        </div>
+      </header>
+
+      <main>
+        <section class="student-hero">
+          <div class="eyebrow"><span class="eyebrow-dot"></span><span data-gov-i18n="govEyebrow">OFFICIAL SERVICES, ALL IN ONE PLACE</span></div>
+          <h1><span data-gov-i18n="govTitleFirst">Government services,</span><br /><span class="hero-accent" data-gov-i18n="govTitleSecond">made easier to navigate.</span></h1>
+          <p data-gov-i18n="govIntro">Find helpful guides and go directly to official portals for common services in India.</p>
+        </section>
+
+        <section class="government-service-section" aria-labelledby="servicesTitle">
+          <div class="section-heading">
+            <div><p class="section-kicker" data-gov-i18n="guidesKicker">GUIDES & OFFICIAL PORTALS</p><h2 id="servicesTitle" data-gov-i18n="servicesTitle">Find a service</h2></div>
+            <span class="service-count" id="serviceCount"></span>
+          </div>
+          <label class="service-search">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="serviceSearch" type="search" autocomplete="off" data-gov-placeholder="searchPlaceholder" placeholder="Search services..." aria-label="Search services" />
+          </label>
+          <div class="student-tools-grid government-service-grid" id="governmentServiceGrid"></div>
+          <p class="empty-state" id="serviceEmpty" hidden data-gov-i18n="noResults">No services found. Try another search.</p>
+        </section>
+
+        <section class="section government-checklist-section">
+          <div class="section-heading">
+            <div><p class="section-kicker" data-gov-i18n="checklistKicker">GET READY BEFORE YOU APPLY</p><h2 data-gov-i18n="checklistTitle">Document checklist</h2></div>
+            <span class="calculator-count" data-gov-i18n="savedLocally">Saved on this device</span>
+          </div>
+          <p class="calculator-intro" data-gov-i18n="checklistIntro">Tick documents you already have ready. Requirements vary by service and applicant.</p>
+          <div class="government-checklist" id="governmentChecklist"></div>
+          <p class="student-result" id="checklistStatus" role="status"></p>
+          <p class="student-note" data-gov-i18n="checklistNote">This is a general preparation list, not an official requirement. Check the relevant portal for the current document list.</p>
+        </section>
+      </main>
+
+      <footer class="footer"><a class="brand footer-brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand-name">daily<span>india</span><small>UTILITY</small></span></a><p data-gov-i18n="footerNote">Little tools. A smoother day.</p><span>© <span id="currentYear"></span> Daily India Utility</span></footer>
+    </div>
+  </body>
+</html>

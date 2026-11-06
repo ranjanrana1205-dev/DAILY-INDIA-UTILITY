@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <meta name="description" content="Free browser-based QR, text, image, PDF, conversion, timer and calendar tools." />
+    <title>Everyday Online Tools — Daily India Utility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <script src="site-features.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+    <script defer src="everyday-online-tools.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="Daily India Utility home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span class="brand-name">daily<span>india</span><small>UTILITY</small></span>
+        </a>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="./index.html" data-online-i18n="homeLink">Home</a>
+          <a href="./student-tools.html" data-online-i18n="studentsLink">Students</a>
+          <a href="./vehicle-travel.html" data-online-i18n="travelLink">Travel</a>
+          <a href="./banking-finance.html" data-online-i18n="financeLink">Finance</a>
+          <a href="./government-services.html" data-online-i18n="governmentLink">Government</a>
+        </nav>
+        <button class="language-switch" id="languageSwitch" type="button" aria-label="Switch language">
+          <span class="language-globe" aria-hidden="true">文</span><span>EN</span><span class="language-divider">/</span><span>हि</span>
+        </button>
+        <div class="site-feature-controls">
+          <button class="site-control" type="button" data-theme-toggle aria-label="Enable dark mode" title="Dark mode"><span aria-hidden="true">☾</span></button>
+          <a class="site-control" href="./index.html#personalDashboard" aria-label="Personal dashboard" title="Personal dashboard"><span aria-hidden="true">♙</span></a>
+          <button class="site-control" type="button" data-install-app hidden aria-label="Install app" title="Install app"><span aria-hidden="true">⇩</span></button>
+        </div>
+        <span class="online-visually-hidden" id="languageStatus" role="status"></span>
+      </header>
+
+      <main>
+        <section class="student-hero">
+          <div class="eyebrow"><span class="eyebrow-dot"></span><span data-online-i18n="eyebrow">EVERYDAY DIGITAL TOOLKIT</span></div>
+          <h1><span data-online-i18n="titleFirst">Useful tools,</span><br /><span class="hero-accent" data-online-i18n="titleSecond">right in your browser.</span></h1>
+          <p data-online-i18n="intro">Create, convert and keep everyday tasks simple. Your files stay on your device while these tools work.</p>
+          <p class="online-privacy-note" data-online-i18n="privacyNote">Files are processed in your browser. Currency conversion fetches public rates online; the amount you enter is not sent.</p>
+        </section>
+
+        <section class="government-service-section" aria-labelledby="onlineToolsTitle">
+          <div class="section-heading">
+            <div><p class="section-kicker" data-online-i18n="toolsKicker">TOOLS FOR EVERYDAY USE</p><h2 id="onlineToolsTitle" data-online-i18n="toolsTitle">Explore online tools</h2></div>
+            <span class="service-count" id="onlineToolCount"></span>
+          </div>
+          <label class="service-search">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input id="onlineToolSearch" type="search" autocomplete="off" data-online-placeholder="searchPlaceholder" placeholder="Search tools..." aria-label="Search tools" />
+          </label>
+
+          <div class="online-tools-grid" id="onlineToolsGrid">
+            <article class="student-card online-tool-card" data-tool-card="qr">
+              <div class="student-card-heading"><span class="student-tool-icon tone-purple" aria-hidden="true">▦</span><div><h2 data-online-i18n="qrTitle">QR Code Generator</h2><p data-online-i18n="qrIntro">Make a QR code from text or a link.</p></div></div>
+              <label class="online-label"><span data-online-i18n="qrContent">Text or URL</span><textarea id="qrText" maxlength="2000" rows="3"></textarea></label>
+              <button class="calculate-button online-action" id="generateQr" type="button" data-online-i18n="generateQr">Generate QR code</button>
+              <div class="qr-output" id="qrOutput" hidden><canvas id="qrCanvas" width="256" height="256"></canvas><button class="student-action-link" id="downloadQr" type="button" data-online-i18n="downloadPng">Download PNG</button></div>
+              <p class="student-result" id="qrStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="password">
+              <div class="student-card-heading"><span class="student-tool-icon tone-green" aria-hidden="true">✦</span><div><h2 data-online-i18n="passwordTitle">Password Generator</h2><p data-online-i18n="passwordIntro">Generate a random password on this device.</p></div></div>
+              <label class="online-label"><span data-online-i18n="passwordLength">Length</span><input id="passwordLength" type="number" min="8" max="64" value="16" /></label>
+              <div class="online-options">
+                <label><input id="passwordLower" type="checkbox" checked /><span data-online-i18n="lowercase">Lowercase</span></label>
+                <label><input id="passwordUpper" type="checkbox" checked /><span data-online-i18n="uppercase">Uppercase</span></label>
+                <label><input id="passwordNumbers" type="checkbox" checked /><span data-online-i18n="numbers">Numbers</span></label>
+                <label><input id="passwordSymbols" type="checkbox" checked /><span data-online-i18n="symbols">Symbols</span></label>
+              </div>
+              <button class="calculate-button online-action" id="generatePassword" type="button" data-online-i18n="generatePassword">Generate password</button>
+              <div class="online-output-row"><output id="passwordOutput" class="online-output" aria-live="polite"></output><button class="student-action-link" id="copyPassword" type="button" data-online-i18n="copy">Copy</button></div>
+              <p class="student-result" id="passwordStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="case">
+              <div class="student-card-heading"><span class="student-tool-icon tone-orange" aria-hidden="true">Aa</span><div><h2 data-online-i18n="caseTitle">Text Case Converter</h2><p data-online-i18n="caseIntro">Change capitalization in your text.</p></div></div>
+              <label class="online-label"><span data-online-i18n="enterText">Enter text</span><textarea id="caseInput" rows="3"></textarea></label>
+              <label class="online-label"><span data-online-i18n="caseStyle">Case style</span><select id="caseStyle"><option value="upper" data-online-i18n="caseUpper">UPPERCASE</option><option value="lower" data-online-i18n="caseLower">lowercase</option><option value="title" data-online-i18n="caseTitleCase">Title Case</option><option value="sentence" data-online-i18n="caseSentence">Sentence case</option></select></label>
+              <button class="calculate-button online-action" id="convertCase" type="button" data-online-i18n="convert">Convert</button>
+              <label class="online-label"><span data-online-i18n="result">Result</span><textarea id="caseOutput" rows="3" readonly></textarea></label>
+              <button class="student-action-link" id="copyCase" type="button" data-online-i18n="copy">Copy</button>
+              <p class="student-result" id="caseStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="words">
+              <div class="student-card-heading"><span class="student-tool-icon tone-blue" aria-hidden="true">¶</span><div><h2 data-online-i18n="wordTitle">Word Counter</h2><p data-online-i18n="wordIntro">Count words, characters and lines.</p></div></div>
+              <label class="online-label"><span data-online-i18n="enterText">Enter text</span><textarea id="wordInput" rows="6"></textarea></label>
+              <div class="online-stats"><span><strong id="wordCount">0</strong><small data-online-i18n="words">Words</small></span><span><strong id="characterCount">0</strong><small data-online-i18n="characters">Characters</small></span><span><strong id="lineCount">0</strong><small data-online-i18n="lines">Lines</small></span></div>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="compress">
+              <div class="student-card-heading"><span class="student-tool-icon tone-pink" aria-hidden="true">▧</span><div><h2 data-online-i18n="compressTitle">Image Compressor</h2><p data-online-i18n="imageIntro">Compress an image locally in your browser.</p></div></div>
+              <label class="online-label"><span data-online-i18n="chooseImage">Choose image</span><input id="compressFile" type="file" accept="image/*" /></label>
+              <label class="online-label"><span data-online-i18n="quality">JPEG quality</span><input id="imageQuality" type="range" min="20" max="95" value="75" /><output id="qualityValue">75%</output></label>
+              <button class="calculate-button online-action" id="compressImage" type="button" data-online-i18n="compressImage">Compress & download</button>
+              <p class="student-result" id="compressStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="resize">
+              <div class="student-card-heading"><span class="student-tool-icon tone-purple" aria-hidden="true">⤢</span><div><h2 data-online-i18n="resizeTitle">Image Resizer</h2><p data-online-i18n="resizeIntro">Resize an image while preserving its proportions.</p></div></div>
+              <label class="online-label"><span data-online-i18n="chooseImage">Choose image</span><input id="resizeFile" type="file" accept="image/*" /></label>
+              <div class="online-fields"><label class="online-label"><span data-online-i18n="widthPx">Width (px)</span><input id="resizeWidth" type="number" min="1" max="12000" /></label><label class="online-label"><span data-online-i18n="heightPx">Height (px)</span><input id="resizeHeight" type="number" min="1" max="12000" /></label></div>
+              <button class="calculate-button online-action" id="resizeImage" type="button" data-online-i18n="resizeDownload">Resize & download</button>
+              <p class="student-result" id="resizeStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="merge">
+              <div class="student-card-heading"><span class="student-tool-icon tone-orange" aria-hidden="true">▤</span><div><h2 data-online-i18n="mergeTitle">PDF Merger</h2><p data-online-i18n="mergeIntro">Combine PDFs in the selected order.</p></div></div>
+              <label class="online-label"><span data-online-i18n="choosePdfs">Choose PDF files</span><input id="mergeFiles" type="file" accept="application/pdf,.pdf" multiple /></label>
+              <button class="calculate-button online-action" id="mergePdfs" type="button" data-online-i18n="mergeDownload">Merge & download</button>
+              <p class="student-result" id="mergeStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="split">
+              <div class="student-card-heading"><span class="student-tool-icon tone-blue" aria-hidden="true">▥</span><div><h2 data-online-i18n="splitTitle">PDF Splitter</h2><p data-online-i18n="splitIntro">Save selected pages to a new PDF.</p></div></div>
+              <label class="online-label"><span data-online-i18n="choosePdf">Choose PDF file</span><input id="splitFile" type="file" accept="application/pdf,.pdf" /></label>
+              <label class="online-label"><span data-online-i18n="pageSelection">Pages (e.g. 1, 3-5)</span><input id="splitPages" type="text" inputmode="numeric" placeholder="1, 3-5" /></label>
+              <button class="calculate-button online-action" id="splitPdf" type="button" data-online-i18n="splitDownload">Extract & download</button>
+              <p class="student-result" id="splitStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="pdfimage">
+              <div class="student-card-heading"><span class="student-tool-icon tone-pink" aria-hidden="true">▧</span><div><h2 data-online-i18n="pdfImageTitle">PDF to Image</h2><p data-online-i18n="pdfImageIntro">Render a PDF page as a PNG image.</p></div></div>
+              <label class="online-label"><span data-online-i18n="choosePdf">Choose PDF file</span><input id="pdfImageFile" type="file" accept="application/pdf,.pdf" /></label>
+              <label class="online-label"><span data-online-i18n="pageNumber">Page number</span><input id="pdfImagePage" type="number" min="1" value="1" /></label>
+              <button class="calculate-button online-action" id="convertPdfImage" type="button" data-online-i18n="convertDownload">Convert & download PNG</button>
+              <p class="student-result" id="pdfImageStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="unit">
+              <div class="student-card-heading"><span class="student-tool-icon tone-green" aria-hidden="true">⇄</span><div><h2 data-online-i18n="unitTitle">Unit Converter</h2><p data-online-i18n="unitIntro">Convert common length, weight and temperature units.</p></div></div>
+              <label class="online-label"><span data-online-i18n="unitType">Measurement</span><select id="unitType"><option value="length" data-online-i18n="length">Length</option><option value="weight" data-online-i18n="weight">Weight</option><option value="temperature" data-online-i18n="temperature">Temperature</option><option value="volume" data-online-i18n="volume">Volume</option></select></label>
+              <div class="online-fields"><label class="online-label"><span data-online-i18n="from">From</span><select id="unitFrom"></select></label><label class="online-label"><span data-online-i18n="to">To</span><select id="unitTo"></select></label></div>
+              <label class="online-label"><span data-online-i18n="value">Value</span><input id="unitValue" type="number" step="any" value="1" /></label>
+              <button class="calculate-button online-action" id="convertUnit" type="button" data-online-i18n="convert">Convert</button>
+              <p class="student-result" id="unitStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="currency">
+              <div class="student-card-heading"><span class="student-tool-icon tone-orange" aria-hidden="true">₹</span><div><h2 data-online-i18n="currencyTitle">Currency Converter</h2><p data-online-i18n="currencyIntro">Convert using the latest available reference rate.</p></div></div>
+              <label class="online-label"><span data-online-i18n="amount">Amount</span><input id="currencyAmount" type="number" min="0" step="any" value="1" /></label>
+              <div class="online-fields"><label class="online-label"><span data-online-i18n="from">From</span><select id="currencyFrom"></select></label><label class="online-label"><span data-online-i18n="to">To</span><select id="currencyTo"></select></label></div>
+              <button class="calculate-button online-action" id="convertCurrency" type="button" data-online-i18n="convert">Convert</button>
+              <p class="student-result" id="currencyStatus" role="status"></p>
+              <p class="student-note" data-online-i18n="currencyNote">Rates are indicative, may be delayed, and are not transaction quotes. Currency codes are looked up online; your amount stays in this browser.</p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="timezone">
+              <div class="student-card-heading"><span class="student-tool-icon tone-blue" aria-hidden="true">◷</span><div><h2 data-online-i18n="timezoneTitle">Time Zone Converter</h2><p data-online-i18n="timezoneIntro">Convert a local date and time between time zones.</p></div></div>
+              <label class="online-label"><span data-online-i18n="dateTime">Date and time</span><input id="timezoneDate" type="datetime-local" /></label>
+              <div class="online-fields"><label class="online-label"><span data-online-i18n="fromZone">From time zone</span><select id="timezoneFrom"></select></label><label class="online-label"><span data-online-i18n="toZone">To time zone</span><select id="timezoneTo"></select></label></div>
+              <button class="calculate-button online-action" id="convertTimezone" type="button" data-online-i18n="convert">Convert</button>
+              <p class="student-result" id="timezoneStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="stopwatch">
+              <div class="student-card-heading"><span class="student-tool-icon tone-purple" aria-hidden="true">◴</span><div><h2 data-online-i18n="stopwatchTitle">Stopwatch</h2><p data-online-i18n="stopwatchIntro">Measure elapsed time and record laps.</p></div></div>
+              <output class="online-clock" id="stopwatchDisplay" aria-live="off">00:00.00</output>
+              <div class="online-button-row"><button class="student-action-link" id="stopwatchStart" type="button" data-online-i18n="start">Start</button><button class="student-action-link" id="stopwatchLap" type="button" data-online-i18n="lap">Lap</button><button class="student-action-link" id="stopwatchReset" type="button" data-online-i18n="reset">Reset</button></div>
+              <ol class="online-laps" id="stopwatchLaps"></ol>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="timer">
+              <div class="student-card-heading"><span class="student-tool-icon tone-orange" aria-hidden="true">◷</span><div><h2 data-online-i18n="timerTitle">Timer</h2><p data-online-i18n="timerIntro">Start a countdown for a chosen duration.</p></div></div>
+              <div class="online-fields"><label class="online-label"><span data-online-i18n="minutes">Minutes</span><input id="timerMinutes" type="number" min="0" max="999" value="5" /></label><label class="online-label"><span data-online-i18n="seconds">Seconds</span><input id="timerSeconds" type="number" min="0" max="59" value="0" /></label></div>
+              <output class="online-clock" id="timerDisplay" aria-live="polite">05:00</output>
+              <div class="online-button-row"><button class="student-action-link" id="timerStart" type="button" data-online-i18n="start">Start</button><button class="student-action-link" id="timerReset" type="button" data-online-i18n="reset">Reset</button></div>
+              <p class="student-result" id="timerStatus" role="status"></p>
+            </article>
+
+            <article class="student-card online-tool-card" data-tool-card="calendar">
+              <div class="student-card-heading"><span class="student-tool-icon tone-green" aria-hidden="true">▦</span><div><h2 data-online-i18n="calendarTitle">Calendar</h2><p data-online-i18n="calendarIntro">View dates and weekdays for any month.</p></div></div>
+              <div class="online-calendar-head"><button class="student-action-link" id="calendarPrevious" type="button" aria-label="Previous month">←</button><strong id="calendarMonth"></strong><button class="student-action-link" id="calendarNext" type="button" aria-label="Next month">→</button></div>
+              <div class="online-calendar" id="calendarGrid"></div>
+            </article>
+          </div>
+          <p class="empty-state" id="onlineToolEmpty" hidden data-online-i18n="noResults">No tools found. Try another search.</p>
+        </section>
+      </main>
+
+      <footer class="footer"><a class="brand footer-brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand-name">daily<span>india</span><small>UTILITY</small></span></a><p data-online-i18n="footerNote">Little tools. A smoother day.</p><span>© <span id="currentYear"></span> Daily India Utility</span></footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <meta name="description" content="Vehicle and travel tools for India: mileage, fuel, trip planning, maintenance, road rules and travel information." />
+    <title>Vehicle & Travel Tools — Daily India Utility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <script src="site-features.js" defer></script>
+    <script src="vehicle-travel.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="Daily India Utility home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span class="brand-name">daily<span>india</span><small>UTILITY</small></span>
+        </a>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="./index.html" data-travel-i18n="homeLink">Home</a>
+          <a href="./student-tools.html" data-travel-i18n="studentsLink">Students</a>
+          <a href="./banking-finance.html" data-travel-i18n="financeLink">Finance</a>
+          <a href="./government-services.html" data-travel-i18n="governmentLink">Government</a>
+          <a href="./everyday-online-tools.html" data-travel-i18n="onlineToolsLink">Online Tools</a>
+        </nav>
+        <button class="language-switch" id="languageSwitch" type="button" aria-label="Switch language">
+          <span class="language-globe" aria-hidden="true">文</span>
+          <span>EN</span><span class="language-divider">/</span><span>हि</span>
+        </button>
+        <div class="site-feature-controls">
+          <button class="site-control" type="button" data-theme-toggle aria-label="Enable dark mode" title="Dark mode"><span aria-hidden="true">☾</span></button>
+          <a class="site-control" href="./index.html#personalDashboard" aria-label="Personal dashboard" title="Personal dashboard"><span aria-hidden="true">♙</span></a>
+          <button class="site-control" type="button" data-install-app hidden aria-label="Install app" title="Install app"><span aria-hidden="true">⇩</span></button>
+        </div>
+      </header>
+
+      <main>
+        <section class="student-hero">
+          <div class="eyebrow"><span class="eyebrow-dot"></span><span data-travel-i18n="travelEyebrow">YOUR JOURNEY, MADE SIMPLER</span></div>
+          <h1><span data-travel-i18n="travelTitleFirst">Go farther,</span><br /><span class="hero-accent" data-travel-i18n="travelTitleSecond">plan a little smarter.</span></h1>
+          <p data-travel-i18n="travelIntro">Practical vehicle and travel tools, useful guides and official information for the road ahead.</p>
+        </section>
+
+        <section class="student-tools-grid" aria-label="Vehicle and travel tools">
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-green">↗</span><div><h2 data-travel-i18n="mileageTitle">Mileage Calculator</h2><p data-travel-i18n="mileageIntro">Find your vehicle's distance per litre or kg.</p></div></div>
+            <form id="mileageForm" class="student-form">
+              <label><span data-travel-i18n="distance">Distance travelled (km)</span><input name="distance" type="number" min="0.1" step="any" required /></label>
+              <label><span data-travel-i18n="fuelUsed">Fuel used (litres / kg)</span><input name="fuel" type="number" min="0.01" step="any" required /></label>
+              <button class="calculate-button" type="submit" data-travel-i18n="calculate">Calculate</button>
+            </form>
+            <p class="student-result" id="mileageResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-orange">₹</span><div><h2 data-travel-i18n="fuelTitle">Fuel Cost Calculator</h2><p data-travel-i18n="fuelIntro">Estimate fuel amount and cost for a distance.</p></div></div>
+            <form id="fuelForm" class="student-form">
+              <label><span data-travel-i18n="distance">Distance travelled (km)</span><input name="distance" type="number" min="0.1" step="any" required /></label>
+              <label><span data-travel-i18n="mileage">Vehicle mileage (km per litre / kg)</span><input name="mileage" type="number" min="0.1" step="any" required /></label>
+              <label><span data-travel-i18n="fuelPrice">Fuel price per litre / kg (₹)</span><input name="price" type="number" min="0" step="any" required /></label>
+              <button class="calculate-button" type="submit" data-travel-i18n="calculate">Calculate</button>
+            </form>
+            <p class="student-result" id="fuelResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-blue">⌖</span><div><h2 data-travel-i18n="tripTitle">Trip Cost Calculator</h2><p data-travel-i18n="tripIntro">Add fuel, tolls and other costs to plan a trip.</p></div></div>
+            <form id="tripForm" class="student-form">
+              <label><span data-travel-i18n="distance">Distance travelled (km)</span><input name="distance" type="number" min="0.1" step="any" required /></label>
+              <label><span data-travel-i18n="mileage">Vehicle mileage (km per litre / kg)</span><input name="mileage" type="number" min="0.1" step="any" required /></label>
+              <label><span data-travel-i18n="fuelPrice">Fuel price per litre / kg (₹)</span><input name="price" type="number" min="0" step="any" required /></label>
+              <label><span data-travel-i18n="tolls">Tolls (₹)</span><input name="tolls" type="number" min="0" step="any" value="0" required /></label>
+              <label><span data-travel-i18n="otherCosts">Other trip costs (₹)</span><input name="other" type="number" min="0" step="any" value="0" required /></label>
+              <label><span data-travel-i18n="people">Travellers</span><input name="people" type="number" min="1" step="1" value="1" required /></label>
+              <button class="calculate-button" type="submit" data-travel-i18n="calculate">Calculate</button>
+            </form>
+            <p class="student-result" id="tripResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-purple">⇄</span><div><h2 data-travel-i18n="distanceTitle">Distance Calculator</h2><p data-travel-i18n="distanceIntro">Estimate straight-line distance between two places.</p></div></div>
+            <form id="distanceForm" class="student-form">
+              <label><span data-travel-i18n="startLat">Starting latitude</span><input name="lat1" type="number" min="-90" max="90" step="any" required /></label>
+              <label><span data-travel-i18n="startLon">Starting longitude</span><input name="lon1" type="number" min="-180" max="180" step="any" required /></label>
+              <label><span data-travel-i18n="endLat">Destination latitude</span><input name="lat2" type="number" min="-90" max="90" step="any" required /></label>
+              <label><span data-travel-i18n="endLon">Destination longitude</span><input name="lon2" type="number" min="-180" max="180" step="any" required /></label>
+              <button class="calculate-button" type="submit" data-travel-i18n="calculate">Calculate</button>
+            </form>
+            <p class="student-note" data-travel-i18n="distanceNote">Straight-line estimate; road distance and travel time will be longer. Find coordinates in your map app.</p>
+            <p class="student-result" id="distanceResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-yellow">✓</span><div><h2 data-travel-i18n="maintenanceTitle">Vehicle Maintenance Tracker</h2><p data-travel-i18n="maintenanceIntro">Keep service reminders on this device.</p></div></div>
+            <form id="maintenanceForm" class="student-form">
+              <label><span data-travel-i18n="vehicleName">Vehicle (name / registration)</span><input name="vehicle" maxlength="60" required /></label>
+              <label><span data-travel-i18n="serviceType">Service or reminder</span><input name="service" maxlength="60" required /></label>
+              <label><span data-travel-i18n="dueDate">Due date</span><input name="date" type="date" required /></label>
+              <label><span data-travel-i18n="dueKm">Due at odometer (km, optional)</span><input name="odometer" type="number" min="0" step="1" /></label>
+              <button class="calculate-button" type="submit" data-travel-i18n="addReminder">Add reminder</button>
+            </form>
+            <ul class="timetable-list" id="maintenanceList"></ul>
+            <p class="student-result" id="maintenanceStatus" role="status"></p>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-orange">!</span><div><h2 data-travel-i18n="trafficTitle">Traffic Rules Guide</h2><p data-travel-i18n="trafficIntro">Check official Indian road-safety information.</p></div></div>
+            <a class="student-resource-link" href="https://morth.nic.in/road-safety" target="_blank" rel="noopener"><strong data-travel-i18n="roadSafetyLink">MoRTH Road Safety</strong><span data-travel-i18n="roadSafetyDesc">Official road safety information and campaigns ↗</span></a>
+            <a class="student-resource-link" href="https://www.indiacode.nic.in/" target="_blank" rel="noopener"><strong data-travel-i18n="indiaCodeLink">India Code</strong><span data-travel-i18n="indiaCodeDesc">Search central laws and legislation ↗</span></a>
+            <p class="student-note" data-travel-i18n="trafficNote">Follow current traffic signs and rules in your state. This guide is not legal advice.</p>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-blue">▤</span><div><h2 data-travel-i18n="licenceTitle">Driving Licence Guide</h2><p data-travel-i18n="licenceIntro">Use the official Parivahan portal for licence services.</p></div></div>
+            <a class="student-resource-link" href="https://sarathi.parivahan.gov.in/" target="_blank" rel="noopener"><strong data-travel-i18n="sarathiTitle">Sarathi Parivahan</strong><span data-travel-i18n="sarathiDesc">Learner's licence, driving licence and related services ↗</span></a>
+            <a class="student-resource-link" href="https://parivahan.gov.in/" target="_blank" rel="noopener"><strong data-travel-i18n="parivahanTitle">Parivahan Sewa</strong><span data-travel-i18n="parivahanDesc">Government transport services and information ↗</span></a>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-green">☑</span><div><h2 data-travel-i18n="documentsTitle">Vehicle Document Checklist</h2><p data-travel-i18n="documentsIntro">Review common documents before you travel.</p></div></div>
+            <div class="vehicle-checklist" id="vehicleChecklist"></div>
+            <p class="student-result" id="checklistStatus" role="status"></p>
+            <p class="student-note" data-travel-i18n="documentsNote">Requirements can vary. Check current rules and keep valid documents accessible.</p>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-purple">▣</span><div><h2 data-travel-i18n="trainTitle">Train Information</h2><p data-travel-i18n="trainIntro">Check trains, live running status and bookings.</p></div></div>
+            <a class="student-resource-link" href="https://www.irctc.co.in/nget/train-search" target="_blank" rel="noopener"><strong data-travel-i18n="irctcTitle">IRCTC Train Search</strong><span data-travel-i18n="irctcDesc">Search trains and make official bookings ↗</span></a>
+            <a class="student-resource-link" href="https://enquiry.indianrail.gov.in/mntes/" target="_blank" rel="noopener"><strong data-travel-i18n="ntesTitle">National Train Enquiry System</strong><span data-travel-i18n="ntesDesc">Check train schedules and running status ↗</span></a>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-orange">▰</span><div><h2 data-travel-i18n="busTitle">Bus Information</h2><p data-travel-i18n="busIntro">Find bus operators and state transport services.</p></div></div>
+            <a class="student-resource-link" href="https://www.redbus.in/" target="_blank" rel="noopener"><strong data-travel-i18n="busBookingTitle">Bus Search & Booking</strong><span data-travel-i18n="busBookingDesc">Search routes, operators and available services ↗</span></a>
+            <a class="student-resource-link" href="https://www.india.gov.in/" target="_blank" rel="noopener"><strong data-travel-i18n="indiaPortalTitle">National Portal of India</strong><span data-travel-i18n="indiaPortalDesc">Find state and public transport service portals ↗</span></a>
+            <p class="student-note" data-travel-i18n="busNote">Check your state transport corporation for local and government bus schedules.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer"><a class="brand footer-brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand-name">daily<span>india</span><small>UTILITY</small></span></a><p data-travel-i18n="footerNote">Little tools. A smoother day.</p><span>© <span id="currentYear"></span> Daily India Utility</span></footer>
+    </div>
+  </body>
+</html>

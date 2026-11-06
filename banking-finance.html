@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <meta name="description" content="India-focused banking and finance tools, including EMI, loan eligibility, savings and budget planning, plus official banking resources." />
+    <title>Banking & Finance Tools — Daily India Utility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <script src="site-features.js" defer></script>
+    <script src="banking-finance.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="Daily India Utility home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span class="brand-name">daily<span>india</span><small>UTILITY</small></span>
+        </a>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="./index.html" data-finance-i18n="homeLink">Home</a>
+          <a href="./student-tools.html" data-finance-i18n="studentsLink">Students</a>
+          <a href="./vehicle-travel.html" data-finance-i18n="travelLink">Travel</a>
+          <a href="./government-services.html" data-finance-i18n="governmentLink">Government</a>
+          <a href="./everyday-online-tools.html" data-finance-i18n="onlineToolsLink">Online Tools</a>
+        </nav>
+        <button class="language-switch" id="languageSwitch" type="button" aria-label="Switch language">
+          <span class="language-globe" aria-hidden="true">文</span>
+          <span>EN</span><span class="language-divider">/</span><span>हि</span>
+        </button>
+        <div class="site-feature-controls">
+          <button class="site-control" type="button" data-theme-toggle aria-label="Enable dark mode" title="Dark mode"><span aria-hidden="true">☾</span></button>
+          <a class="site-control" href="./index.html#personalDashboard" aria-label="Personal dashboard" title="Personal dashboard"><span aria-hidden="true">♙</span></a>
+          <button class="site-control" type="button" data-install-app hidden aria-label="Install app" title="Install app"><span aria-hidden="true">⇩</span></button>
+        </div>
+      </header>
+
+      <main>
+        <section class="student-hero">
+          <div class="eyebrow"><span class="eyebrow-dot"></span><span data-finance-i18n="financeEyebrow">MONEY, MADE A LITTLE CLEARER</span></div>
+          <h1><span data-finance-i18n="financeTitleFirst">Plan your money,</span><br /><span class="hero-accent" data-finance-i18n="financeTitleSecond">with more confidence.</span></h1>
+          <p data-finance-i18n="financeIntro">Simple finance estimates, practical safety guidance and official banking resources for India.</p>
+        </section>
+
+        <section class="student-tools-grid" aria-label="Banking and finance tools">
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-blue">⌕</span><div><h2 data-finance-i18n="ifscTitle">IFSC Code Finder</h2><p data-finance-i18n="ifscIntro">Validate an IFSC format and look up a branch using your bank's official site.</p></div></div>
+            <form id="ifscForm" class="student-form">
+              <label><span data-finance-i18n="ifscLabel">IFSC code</span><input name="ifsc" maxlength="11" autocomplete="off" required /></label>
+              <button class="calculate-button" type="submit" data-finance-i18n="findIfsc">Check code</button>
+            </form>
+            <p class="student-result" id="ifscResult" aria-live="polite"></p>
+            <a class="student-action-link" href="https://www.rbi.org.in/Scripts/IFSCMICRDetails.aspx" target="_blank" rel="noopener" data-finance-i18n="rbiIfscLink">RBI IFSC / MICR information ↗</a>
+            <p class="student-note" data-finance-i18n="ifscNote">This page checks the code format only; confirm branch details with the bank or RBI.</p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-orange">▦</span><div><h2 data-finance-i18n="holidayTitle">Bank Holiday Calendar</h2><p data-finance-i18n="holidayIntro">View weekends for a month and check official state holiday lists.</p></div></div>
+            <form id="holidayForm" class="student-form">
+              <label><span data-finance-i18n="selectMonth">Select month</span><input name="month" type="month" required /></label>
+              <button class="calculate-button" type="submit" data-finance-i18n="showCalendar">Show calendar</button>
+            </form>
+            <div id="holidayCalendar" class="bank-calendar" aria-live="polite"></div>
+            <a class="student-action-link" href="https://www.rbi.org.in/Scripts/HolidayMatrixDisplay.aspx" target="_blank" rel="noopener" data-finance-i18n="rbiHolidayLink">Check RBI holiday matrix ↗</a>
+            <p class="student-note" data-finance-i18n="holidayNote">Calendar marks Sundays and 2nd/4th Saturdays only. State, city and bank-specific holidays may differ.</p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-green">₹</span><div><h2 data-finance-i18n="emiTitle">EMI Calculator</h2><p data-finance-i18n="emiIntro">Estimate monthly instalment and total loan cost.</p></div></div>
+            <form id="emiForm" class="student-form">
+              <label><span data-finance-i18n="loanAmount">Loan amount (₹)</span><input name="principal" type="number" min="1" step="any" required /></label>
+              <label><span data-finance-i18n="annualRate">Annual interest rate (%)</span><input name="rate" type="number" min="0" max="100" step="any" required /></label>
+              <label><span data-finance-i18n="tenureYears">Tenure (years)</span><input name="years" type="number" min="0.1" max="50" step="any" required /></label>
+              <button class="calculate-button" type="submit" data-finance-i18n="calculate">Calculate</button>
+            </form>
+            <div class="finance-result" id="emiResult" aria-live="polite"></div>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-purple">✓</span><div><h2 data-finance-i18n="eligibilityTitle">Loan Eligibility Estimator</h2><p data-finance-i18n="eligibilityIntro">Estimate a possible loan amount from income and obligations.</p></div></div>
+            <form id="eligibilityForm" class="student-form">
+              <label><span data-finance-i18n="monthlyIncome">Monthly net income (₹)</span><input name="income" type="number" min="1" step="any" required /></label>
+              <label><span data-finance-i18n="existingEmis">Existing monthly EMIs (₹)</span><input name="obligations" type="number" min="0" step="any" value="0" required /></label>
+              <label><span data-finance-i18n="foir">Max EMI share of income (%)</span><input name="foir" type="number" min="1" max="100" step="any" value="50" required /></label>
+              <label><span data-finance-i18n="annualRate">Annual interest rate (%)</span><input name="rate" type="number" min="0" max="100" step="any" value="10" required /></label>
+              <label><span data-finance-i18n="tenureYears">Tenure (years)</span><input name="years" type="number" min="0.1" max="50" step="any" value="20" required /></label>
+              <button class="calculate-button" type="submit" data-finance-i18n="estimate">Estimate</button>
+            </form>
+            <div class="finance-result" id="eligibilityResult" aria-live="polite"></div>
+            <p class="student-note" data-finance-i18n="eligibilityNote">Indicative estimate only. Lenders use their own criteria, credit checks and policies.</p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-yellow">◷</span><div><h2 data-finance-i18n="fdRdTitle">FD / RD Calculator</h2><p data-finance-i18n="fdRdIntro">Estimate fixed deposit or recurring deposit maturity.</p></div></div>
+            <form id="fdRdForm" class="student-form">
+              <label><span data-finance-i18n="depositType">Deposit type</span><select name="type"><option value="fd" data-finance-i18n="fixedDeposit">Fixed deposit (FD)</option><option value="rd" data-finance-i18n="recurringDeposit">Recurring deposit (RD)</option></select></label>
+              <label><span data-finance-i18n="principalDeposit">FD principal / RD monthly deposit (₹)</span><input name="amount" type="number" min="1" step="any" required /></label>
+              <label><span data-finance-i18n="annualRate">Annual interest rate (%)</span><input name="rate" type="number" min="0" max="100" step="any" required /></label>
+              <label><span data-finance-i18n="tenureYears">Tenure (years)</span><input name="years" type="number" min="0.1" max="100" step="any" required /></label>
+              <button class="calculate-button" type="submit" data-finance-i18n="calculate">Calculate</button>
+            </form>
+            <div class="finance-result" id="fdRdResult" aria-live="polite"></div>
+            <p class="student-note" data-finance-i18n="fdRdNote">Estimate uses quarterly compounding; bank terms, tax and payout options vary.</p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-green">↗</span><div><h2 data-finance-i18n="sipTitle">SIP Calculator</h2><p data-finance-i18n="sipIntro">Project a monthly investment's potential future value.</p></div></div>
+            <form id="sipForm" class="student-form">
+              <label><span data-finance-i18n="monthlyInvestment">Monthly investment (₹)</span><input name="monthly" type="number" min="1" step="any" required /></label>
+              <label><span data-finance-i18n="expectedReturn">Expected annual return (%)</span><input name="rate" type="number" min="0" max="100" step="any" required /></label>
+              <label><span data-finance-i18n="tenureYears">Tenure (years)</span><input name="years" type="number" min="0.1" max="100" step="any" required /></label>
+              <button class="calculate-button" type="submit" data-finance-i18n="calculate">Calculate</button>
+            </form>
+            <div class="finance-result" id="sipResult" aria-live="polite"></div>
+            <p class="student-note" data-finance-i18n="sipNote">Market-linked returns are not guaranteed. Projection only, not investment advice.</p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-blue">◎</span><div><h2 data-finance-i18n="savingsTitle">Savings Goal Calculator</h2><p data-finance-i18n="savingsIntro">Find a monthly contribution to reach your target.</p></div></div>
+            <form id="savingsForm" class="student-form">
+              <label><span data-finance-i18n="targetAmount">Target amount (₹)</span><input name="target" type="number" min="1" step="any" required /></label>
+              <label><span data-finance-i18n="currentSavings">Current savings (₹)</span><input name="current" type="number" min="0" step="any" value="0" required /></label>
+              <label><span data-finance-i18n="goalMonths">Time to goal (months)</span><input name="months" type="number" min="1" max="1200" step="1" required /></label>
+              <label><span data-finance-i18n="expectedReturn">Expected annual return (%)</span><input name="rate" type="number" min="0" max="100" step="any" value="0" required /></label>
+              <button class="calculate-button" type="submit" data-finance-i18n="calculate">Calculate</button>
+            </form>
+            <div class="finance-result" id="savingsResult" aria-live="polite"></div>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-orange">▤</span><div><h2 data-finance-i18n="budgetTitle">Monthly Budget Planner</h2><p data-finance-i18n="budgetIntro">See how income compares with monthly spending.</p></div></div>
+            <form id="budgetForm" class="student-form">
+              <label><span data-finance-i18n="monthlyIncome">Monthly net income (₹)</span><input name="income" type="number" min="0" step="any" required /></label>
+              <label><span data-finance-i18n="housing">Housing / rent (₹)</span><input name="housing" type="number" min="0" step="any" value="0" required /></label>
+              <label><span data-finance-i18n="food">Food (₹)</span><input name="food" type="number" min="0" step="any" value="0" required /></label>
+              <label><span data-finance-i18n="transport">Transport (₹)</span><input name="transport" type="number" min="0" step="any" value="0" required /></label>
+              <label><span data-finance-i18n="utilities">Utilities (₹)</span><input name="utilities" type="number" min="0" step="any" value="0" required /></label>
+              <label><span data-finance-i18n="otherExpenses">Other expenses (₹)</span><input name="other" type="number" min="0" step="any" value="0" required /></label>
+              <button class="calculate-button" type="submit" data-finance-i18n="calculate">Calculate</button>
+            </form>
+            <div class="finance-result" id="budgetResult" aria-live="polite"></div>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-pink">!</span><div><h2 data-finance-i18n="upiTitle">UPI Safety Guide</h2><p data-finance-i18n="upiIntro">Simple habits to help protect your payments.</p></div></div>
+            <ul class="finance-guide-list">
+              <li data-finance-i18n="upiTipOne">Never share your UPI PIN or OTP—even with someone claiming to be your bank.</li>
+              <li data-finance-i18n="upiTipTwo">A PIN is used to send money, not to receive it. Check the request before approving.</li>
+              <li data-finance-i18n="upiTipThree">Verify the recipient name and amount. Don't scan unknown QR codes to receive money.</li>
+              <li data-finance-i18n="upiTipFour">If a payment seems suspicious, contact your bank using its official app or number.</li>
+            </ul>
+            <a class="student-action-link" href="https://www.npci.org.in/what-we-do/upi/safety-awareness" target="_blank" rel="noopener" data-finance-i18n="upiOfficialLink">NPCI UPI safety information ↗</a>
+            <a class="student-action-link" href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener" data-finance-i18n="cyberReportLink">Report cyber financial fraud ↗</a>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-purple">▣</span><div><h2 data-finance-i18n="accountTitle">Bank Account Guide</h2><p data-finance-i18n="accountIntro">Learn about account choices and official consumer resources.</p></div></div>
+            <a class="student-resource-link" href="https://www.rbi.org.in/commonperson/English/Scripts/FAQs.aspx" target="_blank" rel="noopener"><strong data-finance-i18n="rbiFaqTitle">RBI Consumer FAQs</strong><span data-finance-i18n="rbiFaqDesc">Official answers on banking services and customer rights ↗</span></a>
+            <a class="student-resource-link" href="https://www.dicgc.org.in/" target="_blank" rel="noopener"><strong data-finance-i18n="dicgcTitle">DICGC Deposit Insurance</strong><span data-finance-i18n="dicgcDesc">Learn about deposit insurance and coverage limits ↗</span></a>
+            <p class="student-note" data-finance-i18n="accountNote">Compare fees, minimum balance, access and service terms; confirm current details with the bank.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer"><a class="brand footer-brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand-name">daily<span>india</span><small>UTILITY</small></span></a><p data-finance-i18n="footerNote">Little tools. A smoother day.</p><span>© <span id="currentYear"></span> Daily India Utility</span></footer>
+    </div>
+  </body>
+</html>

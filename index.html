@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <meta name="description" content="Everyday tools for India, all in one place." />
+    <title>Daily India Utility — Everyday tools, made easy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <script src="site-features.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Daily India Utility home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span class="brand-name">daily<span>india</span><small>UTILITY</small></span>
+        </a>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="#popular" data-i18n="navTools">Tools</a>
+          <a href="./student-tools.html" data-i18n="navStudents">Students</a>
+          <a href="./vehicle-travel.html" data-i18n="navTravel">Travel</a>
+          <a href="./banking-finance.html" data-i18n="navFinance">Finance</a>
+          <a href="./government-services.html" data-i18n="navGovernment">Government</a>
+          <a href="./everyday-online-tools.html" data-i18n="navOnlineTools">Online Tools</a>
+          <a href="#categories" data-i18n="navCategories">Categories</a>
+        </nav>
+        <button class="language-switch" id="languageSwitch" type="button" aria-label="Switch language">
+          <span class="language-globe" aria-hidden="true">文</span>
+          <span>EN</span><span class="language-divider">/</span><span>हि</span>
+        </button>
+        <div class="site-feature-controls">
+          <button class="site-control" type="button" data-theme-toggle aria-label="Enable dark mode" title="Dark mode"><span aria-hidden="true">☾</span></button>
+          <a class="site-control" href="#personalDashboard" aria-label="Personal dashboard" title="Personal dashboard"><span aria-hidden="true">♙</span></a>
+          <button class="site-control" type="button" data-install-app hidden aria-label="Install app" title="Install app"><span aria-hidden="true">⇩</span></button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="heroTitle">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="eyebrow">YOUR EVERYDAY TOOLKIT</span></div>
+            <h1 id="heroTitle"><span data-i18n="heroLineOne">India's everyday</span><br /><span class="hero-accent" data-i18n="heroLineTwo">made a little easier.</span></h1>
+            <p data-i18n="heroDescription">Simple, useful tools for the things you do every day. Find what you need and get on with your day.</p>
+            <form class="search-form" id="searchForm" role="search">
+              <span class="search-icon" aria-hidden="true"></span>
+              <input id="toolSearch" type="search" autocomplete="off" data-i18n-placeholder="searchPlaceholder" placeholder="Search any tool..." aria-label="Search any tool" />
+              <button class="voice-search-button" id="voiceSearch" type="button" aria-label="Search by voice" title="Search by voice"><span aria-hidden="true">🎙</span></button>
+              <kbd>⌘ K</kbd>
+              <button type="submit" data-i18n="searchButton">Search</button>
+            </form>
+            <div class="search-hints"><span data-i18n="try">Try:</span> <button type="button" data-query="emi">EMI calculator</button><span>·</span><button type="button" data-query="gst">GST</button><span>·</span><button type="button" data-query="image">Image tools</button></div>
+            <p class="voice-search-status" id="voiceSearchStatus" role="status" aria-live="polite"></p>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="sun-disc"></div>
+            <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+            <div class="art-card card-main"><div class="mini-card-head"><span class="mini-icon">₹</span><span class="mini-dots">•••</span></div><div class="mini-label">MONTHLY SAVINGS</div><div class="mini-value">₹ 8,450</div><div class="mini-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="mini-foot"><span>THIS MONTH</span><b>↗ 12.8%</b></div></div>
+            <div class="floating-note note-top"><span class="note-icon note-green">✓</span><span><b>Quick & simple</b><small>Ready when you are</small></span></div>
+            <div class="floating-note note-bottom"><span class="note-icon note-orange">✦</span><span><b>Made for India</b><small>Useful every day</small></span></div>
+            <div class="art-sparkle sparkle-one">✳</div><div class="art-sparkle sparkle-two">✦</div>
+          </div>
+        </section>
+
+        <section class="section categories-section" id="categories">
+          <div class="section-heading">
+            <div><p class="section-kicker" data-i18n="explore">EXPLORE</p><h2 data-i18n="categoriesTitle">Browse by category</h2></div>
+            <button class="text-link" type="button" id="showAllCategories"><span data-i18n="viewAll">View all</span><span aria-hidden="true">→</span></button>
+          </div>
+          <div class="category-grid" id="categoryGrid"></div>
+        </section>
+
+        <section class="section tools-section" id="popular">
+          <div class="section-heading tool-heading">
+            <div><p class="section-kicker" data-i18n="handpicked">HANDPICKED FOR YOU</p><h2 data-i18n="popularTitle">Popular tools</h2></div>
+            <div class="tool-filter" id="toolFilter" aria-label="Filter tools"></div>
+          </div>
+          <div class="tool-grid" id="popularGrid"></div>
+          <p class="empty-state" id="searchEmpty" hidden data-i18n="noResults">No tools found. Try another search.</p>
+        </section>
+
+        <section class="section personal-dashboard" id="personalDashboard">
+          <div class="section-heading">
+            <div><p class="section-kicker" data-i18n="dashboardKicker">YOUR SPACE ON THIS DEVICE</p><h2 data-i18n="dashboardTitle">Personal dashboard</h2></div>
+            <span class="local-profile-badge" data-i18n="localOnly">Local profile · no password or account</span>
+          </div>
+          <div class="dashboard-profile">
+            <form id="profileForm" class="profile-form">
+              <label for="profileName" data-i18n="profileName">Your name (optional)</label>
+              <input id="profileName" name="profileName" maxlength="40" autocomplete="nickname" />
+              <button class="student-action-link" type="submit" data-i18n="saveProfile">Save on this device</button>
+              <button class="student-action-link" id="clearProfile" type="button" data-i18n="clearProfile">Clear profile</button>
+            </form>
+            <p class="student-note" data-i18n="profileNotice">This local profile is not secure login/signup. Do not enter a password or sensitive information.</p>
+            <p class="student-result" id="profileStatus" role="status"></p>
+          </div>
+          <div class="dashboard-columns">
+            <section aria-labelledby="favoritesTitle">
+              <h3 id="favoritesTitle" data-i18n="favoritesTitle">Favourite tools</h3>
+              <div class="dashboard-tool-list" id="favoritesList"></div>
+            </section>
+            <section aria-labelledby="historyTitle">
+              <h3 id="historyTitle" data-i18n="historyTitle">Recently used</h3>
+              <div class="dashboard-tool-list" id="historyList"></div>
+            </section>
+            <section class="assistant-panel" aria-labelledby="assistantTitle">
+              <div class="assistant-heading"><h3 id="assistantTitle" data-i18n="assistantTitle">Tool Assistant</h3><button class="student-action-link" type="button" id="speakRecommendations" data-i18n="speakHindi">Speak recommendations</button></div>
+              <p class="student-note" data-i18n="assistantNotice">Personalized suggestions are generated on this device from your favorites and recent tools.</p>
+              <div class="dashboard-tool-list" id="recommendationsList"></div>
+              <p class="student-result" id="assistantStatus" role="status"></p>
+            </section>
+          </div>
+        </section>
+
+        <section class="quick-access" aria-labelledby="quickTitle">
+          <div class="quick-copy"><p class="section-kicker" data-i18n="alwaysAtHand">ALWAYS AT HAND</p><h2 id="quickTitle" data-i18n="quickTitle">Your quick access</h2><p data-i18n="quickDescription">The handy essentials, all in one spot.</p></div>
+          <div class="quick-grid" id="quickGrid"></div>
+        </section>
+      </main>
+
+      <footer class="footer"><a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand-name">daily<span>india</span><small>UTILITY</small></span></a><p data-i18n="footerNote">Little tools. A smoother day.</p><span>© <span id="currentYear"></span> Daily India Utility</span></footer>
+    </div>
+    <dialog class="calculator-dialog" id="calculatorDialog" aria-labelledby="calculatorDialogTitle">
+      <div class="calculator-dialog-head">
+        <div><p class="section-kicker" data-i18n="calculatorKicker">MADE FOR EVERYDAY DECISIONS</p><h2 id="calculatorDialogTitle"></h2></div>
+        <button class="dialog-close" id="closeCalculator" type="button" aria-label="Close calculator">×</button>
+      </div>
+      <p class="calculator-dialog-description" id="calculatorDialogDescription"></p>
+      <form id="calculatorForm">
+        <div class="calculator-fields" id="calculatorFields"></div>
+        <p class="calculator-note" id="calculatorNote" hidden></p>
+        <button class="calculate-button" type="submit" data-i18n="calculateButton">Calculate</button>
+      </form>
+      <section class="calculator-result" id="calculatorResult" aria-live="polite" hidden>
+        <p class="section-kicker" data-i18n="estimateLabel">YOUR ESTIMATE</p>
+        <div id="calculatorResultContent"></div>
+      </section>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

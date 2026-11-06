@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fb" />
+    <meta name="description" content="Free study tools for students in India: marks, attendance, timetable, exam countdown and more." />
+    <title>Student Tools — Daily India Utility</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <script src="site-features.js" defer></script>
+    <script src="student-tools.js" defer></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html" aria-label="Daily India Utility home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span class="brand-name">daily<span>india</span><small>UTILITY</small></span>
+        </a>
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="./index.html" data-student-i18n="homeLink">Home</a>
+          <a href="./index.html#calculators" data-student-i18n="calculatorsLink">Calculators</a>
+          <a href="./vehicle-travel.html" data-student-i18n="travelLink">Travel</a>
+          <a href="./banking-finance.html" data-student-i18n="financeLink">Finance</a>
+          <a href="./government-services.html" data-student-i18n="governmentLink">Government</a>
+          <a href="./everyday-online-tools.html" data-student-i18n="onlineToolsLink">Online Tools</a>
+        </nav>
+        <button class="language-switch" id="languageSwitch" type="button" aria-label="Switch language">
+          <span class="language-globe" aria-hidden="true">文</span>
+          <span>EN</span><span class="language-divider">/</span><span>हि</span>
+        </button>
+        <div class="site-feature-controls">
+          <button class="site-control" type="button" data-theme-toggle aria-label="Enable dark mode" title="Dark mode"><span aria-hidden="true">☾</span></button>
+          <a class="site-control" href="./index.html#personalDashboard" aria-label="Personal dashboard" title="Personal dashboard"><span aria-hidden="true">♙</span></a>
+          <button class="site-control" type="button" data-install-app hidden aria-label="Install app" title="Install app"><span aria-hidden="true">⇩</span></button>
+        </div>
+      </header>
+
+      <main>
+        <section class="student-hero">
+          <div class="eyebrow"><span class="eyebrow-dot"></span><span data-student-i18n="studentEyebrow">YOUR STUDY SIDEKICK</span></div>
+          <h1><span data-student-i18n="studentTitleFirst">Study smarter,</span><br /><span class="hero-accent" data-student-i18n="studentTitleSecond">one tool at a time.</span></h1>
+          <p data-student-i18n="studentIntro">Handy tools for marks, classes, exams and the next step in your journey.</p>
+        </section>
+
+        <section class="student-tools-grid" aria-label="Student tools">
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-green">％</span><div><h2 data-student-i18n="marksTitle">Marks Percentage Calculator</h2><p data-student-i18n="marksIntro">Convert your marks into a percentage.</p></div></div>
+            <form id="marksForm" class="student-form">
+              <label><span data-student-i18n="marksScored">Marks scored</span><input name="scored" type="number" min="0" step="any" required /></label>
+              <label><span data-student-i18n="totalMarks">Total marks</span><input name="total" type="number" min="0.01" step="any" required /></label>
+              <button class="calculate-button" type="submit" data-student-i18n="calculate">Calculate</button>
+            </form>
+            <p class="student-result" id="marksResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-blue">∑</span><div><h2 data-student-i18n="cgpaTitle">CGPA Calculator</h2><p data-student-i18n="cgpaIntro">Estimate percentage using the CBSE conversion factor.</p></div></div>
+            <form id="cgpaForm" class="student-form">
+              <label><span data-student-i18n="cgpaLabel">CGPA (out of 10)</span><input name="cgpa" type="number" min="0" max="10" step="any" required /></label>
+              <button class="calculate-button" type="submit" data-student-i18n="calculate">Calculate</button>
+            </form>
+            <p class="student-result" id="cgpaResult" aria-live="polite"></p>
+            <p class="student-note" data-student-i18n="cgpaNote">Estimate: CGPA × 9.5. Check your board's official conversion rules.</p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-orange">✓</span><div><h2 data-student-i18n="attendanceTitle">Attendance Calculator</h2><p data-student-i18n="attendanceIntro">Check your attendance and classes needed.</p></div></div>
+            <form id="attendanceForm" class="student-form">
+              <label><span data-student-i18n="classesAttended">Classes attended</span><input name="attended" type="number" min="0" step="1" required /></label>
+              <label><span data-student-i18n="totalClasses">Total classes</span><input name="total" type="number" min="1" step="1" required /></label>
+              <label><span data-student-i18n="requiredAttendance">Required attendance (%)</span><input name="required" type="number" min="0.01" max="100" step="any" value="75" required /></label>
+              <button class="calculate-button" type="submit" data-student-i18n="calculate">Calculate</button>
+            </form>
+            <p class="student-result" id="attendanceResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-pink">◷</span><div><h2 data-student-i18n="ageTitle">Age Calculator</h2><p data-student-i18n="ageIntro">Find your exact age in years, months and days.</p></div></div>
+            <form id="ageForm" class="student-form">
+              <label><span data-student-i18n="birthDate">Date of birth</span><input name="birthDate" type="date" required /></label>
+              <button class="calculate-button" type="submit" data-student-i18n="calculate">Calculate</button>
+            </form>
+            <p class="student-result" id="ageResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-purple">▦</span><div><h2 data-student-i18n="timetableTitle">Study Timetable Maker</h2><p data-student-i18n="timetableIntro">Add study sessions and keep them on this device.</p></div></div>
+            <form id="timetableForm" class="student-form">
+              <label><span data-student-i18n="subject">Subject / task</span><input name="subject" maxlength="80" required /></label>
+              <label><span data-student-i18n="day">Day</span><select name="day" id="timetableDay"></select></label>
+              <label><span data-student-i18n="startTime">Start time</span><input name="start" type="time" required /></label>
+              <label><span data-student-i18n="endTime">End time</span><input name="end" type="time" required /></label>
+              <button class="calculate-button" type="submit" data-student-i18n="addSession">Add session</button>
+            </form>
+            <ul class="timetable-list" id="timetableList"></ul>
+            <p class="student-result" id="timetableStatus" role="status"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-pink">◷</span><div><h2 data-student-i18n="countdownTitle">Exam Countdown</h2><p data-student-i18n="countdownIntro">See how many days are left until exam day.</p></div></div>
+            <form id="countdownForm" class="student-form">
+              <label><span data-student-i18n="examName">Exam name</span><input name="name" maxlength="80" required /></label>
+              <label><span data-student-i18n="examDate">Exam date</span><input name="date" type="date" required /></label>
+              <button class="calculate-button" type="submit" data-student-i18n="countdownButton">Start countdown</button>
+            </form>
+            <p class="student-result" id="countdownResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-yellow">Aa</span><div><h2 data-student-i18n="wordTitle">Word Counter</h2><p data-student-i18n="wordIntro">Count words and characters as you write.</p></div></div>
+            <label class="student-textarea-label"><span data-student-i18n="pasteText">Write or paste your text</span><textarea id="wordText" rows="5"></textarea></label>
+            <p class="student-result" id="wordResult" aria-live="polite"></p>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-orange">▤</span><div><h2 data-student-i18n="pdfTitle">PDF Tools</h2><p data-student-i18n="pdfIntro">Select a PDF to preview or print from your browser.</p></div></div>
+            <label class="student-file-label"><span data-student-i18n="choosePdf">Choose a PDF file</span><input id="pdfFile" type="file" accept="application/pdf,.pdf" /></label>
+            <p class="student-note" data-student-i18n="pdfNote">Files stay on your device. Printing and saving options depend on your browser; editing and merging are not provided here.</p>
+            <p class="student-result" id="pdfResult" aria-live="polite"></p>
+            <a class="student-action-link" id="pdfOpen" hidden target="_blank" rel="noopener" data-student-i18n="openPdf">Open PDF preview</a>
+          </article>
+
+          <article class="student-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-blue">✎</span><div><h2 data-student-i18n="grammarTitle">English Grammar Checker</h2><p data-student-i18n="grammarIntro">Get a few basic writing suggestions.</p></div></div>
+            <label class="student-textarea-label"><span data-student-i18n="pasteEnglish">Write or paste English text</span><textarea id="grammarText" rows="4"></textarea></label>
+            <button class="calculate-button" id="grammarButton" type="button" data-student-i18n="checkGrammar">Check text</button>
+            <ul class="grammar-results" id="grammarResult" aria-live="polite"></ul>
+            <p class="student-note" data-student-i18n="grammarNote">Basic offline checks only; review suggestions before using them.</p>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-green">★</span><div><h2 data-student-i18n="scholarshipTitle">Scholarship Information</h2><p data-student-i18n="scholarshipIntro">Explore official scholarship information and application portals.</p></div></div>
+            <a class="student-resource-link" href="https://scholarships.gov.in/" target="_blank" rel="noopener"><strong data-student-i18n="nspTitle">National Scholarship Portal</strong><span data-student-i18n="nspDescription">Government scholarship applications and updates ↗</span></a>
+            <a class="student-resource-link" href="https://www.education.gov.in/scholarships-education-loan-4" target="_blank" rel="noopener"><strong data-student-i18n="educationTitle">Ministry of Education</strong><span data-student-i18n="educationDescription">Scholarship and education loan information ↗</span></a>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-purple">⌖</span><div><h2 data-student-i18n="collegeTitle">College Finder</h2><p data-student-i18n="collegeIntro">Browse official college and accreditation resources.</p></div></div>
+            <label><span data-student-i18n="studyInterest">Course or area of interest (optional)</span><input id="collegeInterest" maxlength="100" /></label>
+            <div class="student-resource-actions">
+              <a class="student-action-link" href="https://www.nirfindia.org/" target="_blank" rel="noopener" data-student-i18n="nirfLink">Browse NIRF rankings ↗</a>
+              <a class="student-action-link" href="https://www.aicte-india.org/" target="_blank" rel="noopener" data-student-i18n="aicteLink">Visit AICTE ↗</a>
+            </div>
+            <p class="student-note" data-student-i18n="collegeNote">Verify courses, approvals, fees and admission dates with each institution.</p>
+          </article>
+
+          <article class="student-card student-directory-card">
+            <div class="student-card-heading"><span class="student-tool-icon tone-orange">↗</span><div><h2 data-student-i18n="careerTitle">Career Guidance</h2><p data-student-i18n="careerIntro">Explore official career information and job resources.</p></div></div>
+            <a class="student-resource-link" href="https://www.ncs.gov.in/" target="_blank" rel="noopener"><strong data-student-i18n="ncsTitle">National Career Service</strong><span data-student-i18n="ncsDescription">Career services, counselling and job search ↗</span></a>
+            <a class="student-resource-link" href="https://www.skillindiadigital.gov.in/" target="_blank" rel="noopener"><strong data-student-i18n="skillTitle">Skill India Digital Hub</strong><span data-student-i18n="skillDescription">Explore skills, training and learning resources ↗</span></a>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer"><a class="brand footer-brand" href="./index.html"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span><span class="brand-name">daily<span>india</span><small>UTILITY</small></span></a><p data-student-i18n="footerNote">Little tools. A smoother day.</p><span>© <span id="currentYear"></span> Daily India Utility</span></footer>
+    </div>
+  </body>
+</html>
